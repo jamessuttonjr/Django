@@ -6,12 +6,15 @@
 
 <p>Topic: {{ topic }}</p>
 
-<ul>{% for e in entries %} 
+<ul>{% for e in entries %}
     <li>
-    <p>{{ e.text|linebreaks }}</p>    
-    <p>{{e.date_added|date:'M d, H:i' }}</p>
+        <p>{{ e.text|linebreaks }}</p>
+        <p>{{e.date_added|date:'M d, H:i' }}</p>
+        <p>
+            <a href="{% url 'MainApp:edit_entry' e.id %}">Edit entry</a>
+        </p>
     </li>
-    {% empty %} 
+    {% empty %}
     <li> There are no entries for this topic yet.</li>
     {% endfor %}
 </ul>
